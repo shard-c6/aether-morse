@@ -215,6 +215,7 @@ body {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 1.75rem;
+    min-width: 0; /* Prevents container stretching on mobile */
 }
 
 @media (max-width: 1024px) {
@@ -235,6 +236,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    min-width: 0; /* Ensures fluid container shrinking */
 }
 
 .panel:hover {
@@ -490,6 +492,7 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
+    min-width: 0; /* Prevents horizontal flex stretching on mobile */
 }
 
 /* SYNTH CONTROLS */
