@@ -647,8 +647,11 @@ function stopMorseSound() {
     visualBeaconGlow.classList.remove('active');
     clearAllDictHighlights();
     
-    // Disconnect scheduled oscillators instantly
+    // Disconnect and stop scheduled oscillators instantly
     activeOscillators.forEach(osc => {
+        try {
+            osc.disconnect();
+        } catch(e) {}
         try {
             osc.stop();
         } catch(e) {}
