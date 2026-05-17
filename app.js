@@ -120,6 +120,7 @@ const copyPlainBtn = document.getElementById('copy-plain-btn');
 const listenPlainBtn = document.getElementById('listen-plain-btn');
 const clearMorseBtn = document.getElementById('clear-morse-btn');
 const copyMorseBtn = document.getElementById('copy-morse-btn');
+const listenMorseBtn = document.getElementById('listen-morse-btn');
 const insertDotBtn = document.getElementById('insert-dot-btn');
 const insertDashBtn = document.getElementById('insert-dash-btn');
 const playBtn = document.getElementById('play-btn');
@@ -499,6 +500,7 @@ function playMorseSound() {
 
     isPlaying = true;
     playBtn.disabled = true;
+    if (listenMorseBtn) listenMorseBtn.disabled = true;
     stopBtn.disabled = false;
     playBtn.classList.add('btn-secondary');
     playBtn.classList.remove('btn-primary');
@@ -612,6 +614,7 @@ function scheduleOscTone(startTime, duration, freq) {
 function stopMorseSound() {
     isPlaying = false;
     playBtn.disabled = false;
+    if (listenMorseBtn) listenMorseBtn.disabled = false;
     stopBtn.disabled = true;
     playBtn.classList.remove('btn-secondary');
     playBtn.classList.add('btn-primary');
@@ -793,6 +796,63 @@ function handleKeyerUp(e) {
     }, dotDurationMs * 7.5);
 }
 
+// Trigger a manual symbol (dot or dash) directly from keydown (e.g. '.' or '-')
+function triggerManualSymbol(symbol) {
+    if (!keyerActive) return;
+    if (isPlaying) stopMorseSound(); // Terminate automated playbacks
+
+    // Visual indicators
+    telegraphKey.classList.add('pressed');
+    visualBeacon.classList.add('active');
+    visualBeaconGlow.classList.add('active');
+
+    keyerStatusPulse.className = "status-pulse blue";
+    keyerStatusText.textContent = "KEYER: TRANSMITTING";
+
+    // Play tone for the duration of the symbol
+    const timing = getTiming();
+    const dotDurationMs = timing.dot * 1000;
+    const durationMs = symbol === '.' ? dotDurationMs : dotDurationMs * 3;
+
+    // Reset visual indicator after the tone duration
+    setTimeout(() => {
+        telegraphKey.classList.remove('pressed');
+        visualBeacon.classList.remove('active');
+        visualBeaconGlow.classList.remove('active');
+        keyerStatusPulse.className = "status-pulse green";
+        keyerStatusText.textContent = "KEYER: IDLE";
+    }, durationMs);
+
+    // Play synthesized tone
+    const frequency = getPitch();
+    const startTime = audioContext.currentTime;
+    const durationSec = durationMs / 1000;
+    
+    initAudio();
+    scheduleOscTone(startTime, durationSec, frequency);
+
+    metricDuration.textContent = `${Math.round(durationMs)} ms`;
+    metricSymbol.textContent = symbol === '.' ? '• Dot' : '▬ Dash';
+
+    // Clear word/letter spacing idle timers
+    clearTimeout(keyInactivityTimer);
+    clearTimeout(keyWordSpacingTimer);
+
+    // Append to live keyer buffer
+    keyBuffer.push(symbol);
+    metricBuffer.textContent = keyBuffer.join(' ');
+
+    // Character completion timeout (inactive for 3.5 units)
+    keyInactivityTimer = setTimeout(() => {
+        completeManualCharacter();
+    }, dotDurationMs * 3.5);
+
+    // Word completion timeout (inactive for 7.5 units)
+    keyWordSpacingTimer = setTimeout(() => {
+        completeManualWord();
+    }, dotDurationMs * 7.5);
+}
+
 function completeManualCharacter() {
     if (keyBuffer.length === 0) return;
     
@@ -880,6 +940,11 @@ copyMorseBtn.addEventListener('click', () => {
     setTimeout(() => { copyMorseBtn.innerHTML = origText; }, 1000);
 });
 
+// Hear Morse Code trigger listener
+if (listenMorseBtn) {
+    listenMorseBtn.addEventListener('click', playMorseSound);
+}
+
 // Insert utilities
 insertDotBtn.addEventListener('click', () => {
     morseInput.value += '.';
@@ -935,16 +1000,33 @@ telegraphKey.addEventListener('touchend', (e) => {
     handleKeyerUp();
 });
 
-// Spacebar Key Listeners
+// Spacebar, Dot (dit), and Dash (dah) Keyboard Listeners
 window.addEventListener('keydown', (e) => {
-    if (e.code === 'Space' && e.target !== plainInput && e.target !== morseInput && e.target !== sampleSelect && e.target !== speedSlider && e.target !== pitchSlider) {
+    // Bypass if typing in text inputs or focusable input/select fields
+    if (e.target === plainInput || e.target === morseInput || e.target === sampleSelect || e.target === speedSlider || e.target === pitchSlider || e.target === staticSlider) {
+        return;
+    }
+
+    if (e.code === 'Space') {
         e.preventDefault();
         handleKeyerDown(e);
+    } else if (e.key === '.' || e.code === 'Period' || e.code === 'NumpadDecimal') {
+        if (e.repeat) return;
+        e.preventDefault();
+        triggerManualSymbol('.');
+    } else if (e.key === '-' || e.code === 'Minus' || e.code === 'NumpadSubtract') {
+        if (e.repeat) return;
+        e.preventDefault();
+        triggerManualSymbol('-');
     }
 });
 
 window.addEventListener('keyup', (e) => {
-    if (e.code === 'Space' && e.target !== plainInput && e.target !== morseInput && e.target !== sampleSelect && e.target !== speedSlider && e.target !== pitchSlider) {
+    if (e.target === plainInput || e.target === morseInput || e.target === sampleSelect || e.target === speedSlider || e.target === pitchSlider || e.target === staticSlider) {
+        return;
+    }
+
+    if (e.code === 'Space') {
         e.preventDefault();
         handleKeyerUp(e);
     }
