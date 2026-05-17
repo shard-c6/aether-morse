@@ -38,6 +38,7 @@ let audioContext = null;
 let currentOscillator = null;
 let currentGainNode = null;
 let playTimeoutIds = [];
+let activeOscillators = []; // Track active scheduled oscillators for real-time parameter sweeps
 let activeScheduledSegments = []; // { start, end, char, charIndex }
 let isPlaying = false;
 let animationFrameId = null;
@@ -609,6 +610,18 @@ function scheduleOscTone(startTime, duration, freq) {
 
     osc.start(startTime);
     osc.stop(startTime + duration + 0.01);
+
+    // Track active scheduled oscillators for real-time adjustments
+    activeOscillators.push(osc);
+
+    // Remove from active list when finished playing
+    const durationMs = (startTime + duration + 0.01 - audioContext.currentTime) * 1000;
+    setTimeout(() => {
+        const index = activeOscillators.indexOf(osc);
+        if (index > -1) {
+            activeOscillators.splice(index, 1);
+        }
+    }, Math.max(0, durationMs));
 }
 
 function stopMorseSound() {
@@ -633,6 +646,14 @@ function stopMorseSound() {
     visualBeacon.classList.remove('active');
     visualBeaconGlow.classList.remove('active');
     clearAllDictHighlights();
+    
+    // Disconnect scheduled oscillators instantly
+    activeOscillators.forEach(osc => {
+        try {
+            osc.stop();
+        } catch(e) {}
+    });
+    activeOscillators = [];
     
     // Disconnect oscillators if any are immediate
     if (currentOscillator) {
@@ -908,6 +929,13 @@ speedSlider.addEventListener('input', () => {
 
 pitchSlider.addEventListener('input', () => {
     pitchValue.textContent = `${pitchSlider.value} Hz`;
+    const newPitch = parseInt(pitchSlider.value, 10);
+    // Real-time frequency adjustment during active playbacks
+    activeOscillators.forEach(osc => {
+        try {
+            osc.frequency.setValueAtTime(newPitch, audioContext.currentTime);
+        } catch(e) {}
+    });
 });
 
 // Clear Textareas
@@ -1042,6 +1070,13 @@ document.querySelectorAll('.waveform-btn').forEach(btn => {
         if (liveOscillator) {
             liveOscillator.type = selectedWaveform;
         }
+
+        // Real-time waveform adjustment during active playbacks
+        activeOscillators.forEach(osc => {
+            try {
+                osc.type = selectedWaveform;
+            } catch(e) {}
+        });
     });
 });
 
