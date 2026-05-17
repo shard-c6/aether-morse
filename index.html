@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aether Morse - A premium, interactive Morse Code converter, high-fidelity Web Audio API synthesizer, and manual telegraph keyer.">
+    <meta name="description"
+        content="Aether Morse - A premium, interactive Morse Code converter, high-fidelity Web Audio API synthesizer, and manual telegraph keyer.">
     <title>Aether Morse // Cosmic Morse Code Synthesizer & Keyer</title>
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#06080e">
@@ -14,10 +16,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Background Space Dust Glows -->
     <div class="space-glow glow-1"></div>
@@ -28,7 +33,8 @@
         <!-- HEADER -->
         <header class="app-header">
             <div class="logo-container">
-                <img src="favicon.png" alt="Aether Morse Logo" class="app-logo" style="border-radius: 12px; border: 1px solid rgba(0, 242, 254, 0.3); box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); object-fit: cover;">
+                <img src="favicon.png" alt="Aether Morse Logo" class="app-logo"
+                    style="border-radius: 12px; border: 1px solid rgba(0, 242, 254, 0.3); box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); object-fit: cover;">
                 <div class="title-meta">
                     <h1>AETHER MORSE</h1>
                     <p class="subtitle">Interstellar Sound & Telegraph Station</p>
@@ -48,7 +54,7 @@
 
         <!-- MAIN LAYOUT -->
         <main class="main-grid">
-            
+
             <!-- COLUMN 1: TRANSLATION CORE -->
             <section class="panel translation-section">
                 <div class="panel-header">
@@ -68,249 +74,290 @@
 
                 <div class="translation-grid">
                     <!-- Plain Text Card -->
-                    <div class="card textarea-card" id="plain-text-card">
-                        <div class="card-header">
-                            <span class="card-title">Plain Text</span>
-                            <span class="char-count" id="plain-char-count">0 chars</span>
-                        </div>
-                        <textarea id="plain-input" placeholder="Type messages here to translate to Morse code..." autocomplete="off" spellcheck="false"></textarea>
-                        <div class="card-footer">
-                            <button class="btn btn-secondary" id="clear-plain-btn" title="Clear Text">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                                Clear
-                            </button>
-                            <button class="btn btn-secondary" id="copy-plain-btn" title="Copy Text">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-                                Copy
-                            </button>
-                            <button class="btn btn-secondary" id="listen-plain-btn" title="Synthesize Voice (Speech)">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                                Read Aloud
-                            </button>
-                        </div>
+                    <div class="card textarea-card" id="plain-text-card" <div class="card-header">
+                        <span class="card-title">Plain Text</span>
+                        <span class="char-count" id="plain-char-count">0 chars</span>
                     </div>
-
-                    <!-- Visual Bridge / Dynamic Indicator -->
-                    <div class="translation-bridge">
-                        <div class="bridge-line"></div>
-                        <div class="bridge-indicator" id="translation-direction-indicator">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" id="bridge-arrow-path"/>
+                    <textarea id="plain-input" placeholder="Type messages here to translate to Morse code..."
+                        autocomplete="off" spellcheck="false"></textarea>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary" id="clear-plain-btn" title="Clear Text">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
                             </svg>
+                            Clear
+                        </button>
+                        <button class="btn btn-secondary" id="copy-plain-btn" title="Copy Text">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                            Copy
+                        </button>
+                        <button class="btn btn-secondary" id="listen-plain-btn" title="Synthesize Voice (Speech)">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                            Read Aloud
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Bridge / Dynamic Indicator -->
+                <div class="translation-bridge">
+                    <div class="bridge-line"></div>
+                    <div class="bridge-indicator" id="translation-direction-indicator">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" id="bridge-arrow-path" />
+                        </svg>
+                    </div>
+                    <div class="bridge-line"></div>
+                </div>
+
+                <!-- Morse Code Card -->
+                <div class="card textarea-card" id="morse-code-card">
+                    <div class="card-header">
+                        <span class="card-title">Morse Code</span>
+                        <span class="char-count" id="morse-word-count">0 symbols</span>
+                    </div>
+                    <textarea id="morse-input"
+                        placeholder="Type Morse code here (dots '.', dashes '-', letters space ' ', words slash '/')..."
+                        autocomplete="off" spellcheck="false"></textarea>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary" id="clear-morse-btn" title="Clear Morse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg>
+                            Clear
+                        </button>
+                        <button class="btn btn-secondary" id="copy-morse-btn" title="Copy Morse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                            Copy
+                        </button>
+                        <button class="btn btn-secondary" id="listen-morse-btn" title="Hear Morse Sound">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"
+                                style="transform: scale(0.9); margin-right: 4px; display: inline-block; vertical-align: middle;">
+                                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                            </svg>
+                            Hear Code
+                        </button>
+                        <button class="btn btn-secondary" id="insert-dot-btn" title="Insert Dot (.)">
+                            • Dot
+                        </button>
+                        <button class="btn btn-secondary" id="insert-dash-btn" title="Insert Dash (-)">
+                            ▬ Dash
+                        </button>
+                    </div>
+                </div>
+    </div>
+    </section>
+
+    <!-- COLUMN 2: CONTROLLER & KEYER -->
+    <div class="sidebar-grid">
+
+        <!-- THE AURALIZER (SYNTHESIZER) -->
+        <section class="panel synth-section">
+            <div class="panel-header">
+                <h2><span class="gradient-text">The Auralizer</span></h2>
+                <span class="panel-badge">Web Audio Synth</span>
+            </div>
+
+            <div class="synth-controls">
+                <!-- Play / Pause / Stop -->
+                <div class="playback-controls">
+                    <button class="btn btn-primary btn-icon" id="play-btn" title="Play Morse Sound">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Play Sound</span>
+                    </button>
+                    <button class="btn btn-danger btn-icon" id="stop-btn" title="Stop Playback" disabled>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        </svg>
+                        <span>Stop</span>
+                    </button>
+                </div>
+
+                <!-- Parameters (WPM & Frequency) -->
+                <!-- Waveform Type Selector -->
+                <div class="waveform-selector">
+                    <span class="waveform-label">Oscillator Waveform</span>
+                    <div class="waveform-buttons">
+                        <button class="waveform-btn active" data-wave="sine"
+                            title="Sine Wave (Clean Tone)">SINE</button>
+                        <button class="waveform-btn" data-wave="triangle"
+                            title="Triangle Wave (Warm Radio)">TRI</button>
+                        <button class="waveform-btn" data-wave="square" title="Square Wave (Retro Arcade)">SQR</button>
+                        <button class="waveform-btn" data-wave="sawtooth"
+                            title="Sawtooth Wave (Buzzing Military)">SAW</button>
+                    </div>
+                </div>
+
+                <!-- Parameters (WPM, Frequency, Static) -->
+                <div class="param-sliders">
+                    <div class="slider-group">
+                        <div class="slider-info">
+                            <label for="speed-slider">Speed (WPM)</label>
+                            <span class="slider-value" id="speed-value">18 WPM</span>
                         </div>
-                        <div class="bridge-line"></div>
+                        <input type="range" id="speed-slider" min="5" max="40" value="18" step="1">
                     </div>
 
-                    <!-- Morse Code Card -->
-                    <div class="card textarea-card" id="morse-code-card">
-                        <div class="card-header">
-                            <span class="card-title">Morse Code</span>
-                            <span class="char-count" id="morse-word-count">0 symbols</span>
+                    <div class="slider-group">
+                        <div class="slider-info">
+                            <label for="pitch-slider">Tone Pitch (Hz)</label>
+                            <span class="slider-value" id="pitch-value">600 Hz</span>
                         </div>
-                        <textarea id="morse-input" placeholder="Type Morse code here (dots '.', dashes '-', letters space ' ', words slash '/')..." autocomplete="off" spellcheck="false"></textarea>
-                        <div class="card-footer">
-                            <button class="btn btn-secondary" id="clear-morse-btn" title="Clear Morse">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                                Clear
-                            </button>
-                            <button class="btn btn-secondary" id="copy-morse-btn" title="Copy Morse">
-                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-                                Copy
-                            </button>
-                            <button class="btn btn-secondary" id="listen-morse-btn" title="Hear Morse Sound">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="transform: scale(0.9); margin-right: 4px; display: inline-block; vertical-align: middle;"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                                Hear Code
-                            </button>
-                            <button class="btn btn-secondary" id="insert-dot-btn" title="Insert Dot (.)">
-                                • Dot
-                            </button>
-                            <button class="btn btn-secondary" id="insert-dash-btn" title="Insert Dash (-)">
-                                ▬ Dash
-                            </button>
+                        <input type="range" id="pitch-slider" min="400" max="1000" value="600" step="10">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-info">
+                            <label for="static-slider">Atmospheric Static</label>
+                            <span class="slider-value" id="static-value">0%</span>
+                        </div>
+                        <input type="range" id="static-slider" min="0" max="100" value="0" step="5">
+                    </div>
+                </div>
+
+                <!-- Combined Beacon & Dynamic Oscilloscope -->
+                <div class="beacon-container">
+                    <div class="beacon-subtext">SPECTRUM ANALYSIS & BEACON</div>
+                    <div class="spectrum-visualizer-row">
+                        <div class="beacon-wrapper">
+                            <div class="beacon" id="visual-beacon"></div>
+                            <div class="beacon-glow" id="visual-beacon-glow"></div>
+                        </div>
+                        <div class="oscilloscope-wrapper">
+                            <canvas id="oscilloscope" width="180" height="72"></canvas>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- COLUMN 2: CONTROLLER & KEYER -->
-            <div class="sidebar-grid">
-                
-                <!-- THE AURALIZER (SYNTHESIZER) -->
-                <section class="panel synth-section">
-                    <div class="panel-header">
-                        <h2><span class="gradient-text">The Auralizer</span></h2>
-                        <span class="panel-badge">Web Audio Synth</span>
-                    </div>
-
-                    <div class="synth-controls">
-                        <!-- Play / Pause / Stop -->
-                        <div class="playback-controls">
-                            <button class="btn btn-primary btn-icon" id="play-btn" title="Play Morse Sound">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                                <span>Play Sound</span>
-                            </button>
-                            <button class="btn btn-danger btn-icon" id="stop-btn" title="Stop Playback" disabled>
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect></svg>
-                                <span>Stop</span>
-                            </button>
-                        </div>
-
-                        <!-- Parameters (WPM & Frequency) -->
-                        <!-- Waveform Type Selector -->
-                        <div class="waveform-selector">
-                            <span class="waveform-label">Oscillator Waveform</span>
-                            <div class="waveform-buttons">
-                                <button class="waveform-btn active" data-wave="sine" title="Sine Wave (Clean Tone)">SINE</button>
-                                <button class="waveform-btn" data-wave="triangle" title="Triangle Wave (Warm Radio)">TRI</button>
-                                <button class="waveform-btn" data-wave="square" title="Square Wave (Retro Arcade)">SQR</button>
-                                <button class="waveform-btn" data-wave="sawtooth" title="Sawtooth Wave (Buzzing Military)">SAW</button>
-                            </div>
-                        </div>
-
-                        <!-- Parameters (WPM, Frequency, Static) -->
-                        <div class="param-sliders">
-                            <div class="slider-group">
-                                <div class="slider-info">
-                                    <label for="speed-slider">Speed (WPM)</label>
-                                    <span class="slider-value" id="speed-value">18 WPM</span>
-                                </div>
-                                <input type="range" id="speed-slider" min="5" max="40" value="18" step="1">
-                            </div>
-
-                            <div class="slider-group">
-                                <div class="slider-info">
-                                    <label for="pitch-slider">Tone Pitch (Hz)</label>
-                                    <span class="slider-value" id="pitch-value">600 Hz</span>
-                                </div>
-                                <input type="range" id="pitch-slider" min="400" max="1000" value="600" step="10">
-                            </div>
-
-                            <div class="slider-group">
-                                <div class="slider-info">
-                                    <label for="static-slider">Atmospheric Static</label>
-                                    <span class="slider-value" id="static-value">0%</span>
-                                </div>
-                                <input type="range" id="static-slider" min="0" max="100" value="0" step="5">
-                            </div>
-                        </div>
-
-                        <!-- Combined Beacon & Dynamic Oscilloscope -->
-                        <div class="beacon-container">
-                            <div class="beacon-subtext">SPECTRUM ANALYSIS & BEACON</div>
-                            <div class="spectrum-visualizer-row">
-                                <div class="beacon-wrapper">
-                                    <div class="beacon" id="visual-beacon"></div>
-                                    <div class="beacon-glow" id="visual-beacon-glow"></div>
-                                </div>
-                                <div class="oscilloscope-wrapper">
-                                    <canvas id="oscilloscope" width="180" height="72"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- TELEGRAPH STATION (MANUAL KEYER) -->
-                <section class="panel keyer-section">
-                    <div class="panel-header">
-                        <h2><span class="gradient-text">Telegraph Station</span></h2>
-                        <div class="toggle-container">
-                            <label class="switch" for="keyer-toggle">
-                                <input type="checkbox" id="keyer-toggle" checked>
-                                <span class="toggle-slider"></span>
-                            </label>
-                            <span class="toggle-label">Active</span>
-                        </div>
-                    </div>
-
-                    <div class="keyer-body">
-                        <!-- Instructions -->
-                        <p class="keyer-hint">Click the key below or hold the <strong>Spacebar</strong> to tap out Morse. Taps translate automatically!</p>
-                        
-                        <!-- Tap metrics -->
-                        <div class="keyer-metrics">
-                            <div class="metric">
-                                <span class="metric-label">Duration</span>
-                                <span class="metric-value" id="metric-duration">0 ms</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Last Symbol</span>
-                                <span class="metric-value" id="metric-symbol">-</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Live Buffer</span>
-                                <span class="metric-value code-font" id="metric-buffer">...</span>
-                            </div>
-                        </div>
-
-                        <!-- Dynamic telegraph key -->
-                        <div class="telegraph-key-wrapper">
-                            <button id="telegraph-key" aria-label="Telegraph Key">
-                                <span class="key-shadow"></span>
-                                <span class="key-base"></span>
-                                <span class="key-arm"></span>
-                                <span class="key-cap"></span>
-                            </button>
-                        </div>
-
-                        <!-- Telegraph Station Training Tutor -->
-                        <div class="tutor-card card">
-                            <div class="tutor-header-row">
-                                <span class="tutor-title">TRANSMISSION TRAINING TUTOR</span>
-                                <button class="btn btn-secondary btn-sm" id="tutor-toggle-btn">Start Practice</button>
-                            </div>
-                            <div class="tutor-body" id="tutor-body-area" style="display: none;">
-                                <div class="tutor-words-line">
-                                    <span class="tutor-word-prompt">TAP THIS WORD:</span>
-                                    <div class="tutor-word-display" id="tutor-word-display">
-                                        <!-- Will be dynamically populated -->
-                                    </div>
-                                </div>
-                                <div class="tutor-guide-line">
-                                    <span class="tutor-guide-label">Target Morse:</span>
-                                    <span class="tutor-guide-code" id="tutor-guide-code">.... . .-.. .-.. ---</span>
-                                </div>
-                                <div class="tutor-progress-bar">
-                                    <div class="tutor-progress-fill" id="tutor-progress-fill" style="width: 0%;"></div>
-                                </div>
-                                <div class="tutor-feedback" id="tutor-feedback-text">Listen to the prompt or start keying!</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-            </div>
-        </main>
-
-        <!-- DICTIONARY CHEAT SHEET -->
-        <section class="panel dictionary-section">
-            <div class="panel-header">
-                <h2><span class="gradient-text">Morse Dictionary Reference</span></h2>
-                <p class="dictionary-desc">Interactive cheat sheet. Matches illuminate in real-time during playback.</p>
-            </div>
-            
-            <div class="dictionary-tabs">
-                <button class="tab-btn active" data-tab="letters">Letters</button>
-                <button class="tab-btn" data-tab="numbers">Numbers</button>
-                <button class="tab-btn" data-tab="prosigns">Common Signals</button>
-            </div>
-
-            <!-- TAB CONTENTS -->
-            <div class="dictionary-grid active" id="tab-letters">
-                <!-- Will be dynamically generated for easier search/highlighting -->
-            </div>
-            <div class="dictionary-grid" id="tab-numbers">
-                <!-- Will be dynamically generated -->
-            </div>
-            <div class="dictionary-grid" id="tab-prosigns">
-                <!-- Will be dynamically generated -->
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="app-footer">
-            <p>Designed with Cosmic Aesthetics by Antigravity AI &copy; 2026. Made with standard HTML5, CSS Variables, and Web Audio API.</p>
-        </footer>
+        <!-- TELEGRAPH STATION (MANUAL KEYER) -->
+        <section class="panel keyer-section">
+            <div class="panel-header">
+                <h2><span class="gradient-text">Telegraph Station</span></h2>
+                <div class="toggle-container">
+                    <label class="switch" for="keyer-toggle">
+                        <input type="checkbox" id="keyer-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Active</span>
+                </div>
+            </div>
+
+            <div class="keyer-body">
+                <!-- Instructions -->
+                <p class="keyer-hint">Click the key below or hold the <strong>Spacebar</strong> to tap out Morse. Taps
+                    translate automatically!</p>
+
+                <!-- Tap metrics -->
+                <div class="keyer-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Duration</span>
+                        <span class="metric-value" id="metric-duration">0 ms</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Last Symbol</span>
+                        <span class="metric-value" id="metric-symbol">-</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Live Buffer</span>
+                        <span class="metric-value code-font" id="metric-buffer">...</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic telegraph key -->
+                <div class="telegraph-key-wrapper">
+                    <button id="telegraph-key" aria-label="Telegraph Key">
+                        <span class="key-shadow"></span>
+                        <span class="key-base"></span>
+                        <span class="key-arm"></span>
+                        <span class="key-cap"></span>
+                    </button>
+                </div>
+
+                <!-- Telegraph Station Training Tutor -->
+                <div class="tutor-card card">
+                    <div class="tutor-header-row">
+                        <span class="tutor-title">TRANSMISSION TRAINING TUTOR</span>
+                        <button class="btn btn-secondary btn-sm" id="tutor-toggle-btn">Start Practice</button>
+                    </div>
+                    <div class="tutor-body" id="tutor-body-area" style="display: none;">
+                        <div class="tutor-words-line">
+                            <span class="tutor-word-prompt">TAP THIS WORD:</span>
+                            <div class="tutor-word-display" id="tutor-word-display">
+                                <!-- Will be dynamically populated -->
+                            </div>
+                        </div>
+                        <div class="tutor-guide-line">
+                            <span class="tutor-guide-label">Target Morse:</span>
+                            <span class="tutor-guide-code" id="tutor-guide-code">.... . .-.. .-.. ---</span>
+                        </div>
+                        <div class="tutor-progress-bar">
+                            <div class="tutor-progress-fill" id="tutor-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="tutor-feedback" id="tutor-feedback-text">Listen to the prompt or start keying!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    </main>
+
+    <!-- DICTIONARY CHEAT SHEET -->
+    <section class="panel dictionary-section">
+        <div class="panel-header">
+            <h2><span class="gradient-text">Morse Dictionary Reference</span></h2>
+            <p class="dictionary-desc">Interactive cheat sheet. Matches illuminate in real-time during playback.</p>
+        </div>
+
+        <div class="dictionary-tabs">
+            <button class="tab-btn active" data-tab="letters">Letters</button>
+            <button class="tab-btn" data-tab="numbers">Numbers</button>
+            <button class="tab-btn" data-tab="prosigns">Common Signals</button>
+        </div>
+
+        <!-- TAB CONTENTS -->
+        <div class="dictionary-grid active" id="tab-letters">
+            <!-- Will be dynamically generated for easier search/highlighting -->
+        </div>
+        <div class="dictionary-grid" id="tab-numbers">
+            <!-- Will be dynamically generated -->
+        </div>
+        <div class="dictionary-grid" id="tab-prosigns">
+            <!-- Will be dynamically generated -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <p>Designed with Cosmic Aesthetics by Antigravity AI &copy; 2026. Made with standard HTML5, CSS Variables, and
+            Web Audio API.</p>
+    </footer>
     </div>
 
     <!-- Main JavaScript Logic -->
@@ -329,4 +376,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -1188,9 +1188,24 @@ input:checked + .toggle-slider:before {
    MOBILE & RESPONSIVE QUERIES
    ========================================================================== */
 
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE QUERIES
+   ========================================================================== */
+
 @media (max-width: 1024px) {
     .app-container {
         padding: 1rem;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
     }
 }
 
@@ -1209,36 +1224,62 @@ input:checked + .toggle-slider:before {
     .status-panel {
         justify-content: center;
         flex-wrap: wrap;
+        gap: 0.75rem;
     }
 
     .panel {
         padding: 1.25rem;
     }
 
-    .translation-body {
+    .sidebar-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .keyer-metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .metric:nth-child(3) {
+        grid-column: span 2;
+    }
+
+    .waveform-buttons {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .waveform-btn {
+        flex: 1 1 calc(50% - 0.2rem);
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .playback-controls {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
     }
 
-    .bidirectional-arrow {
-        transform: rotate(90deg);
-        margin: 0.5rem 0;
+    .playback-controls .btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.85rem;
     }
 
-    .text-area {
-        height: 150px;
+    .card-footer {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.4rem;
+    }
+
+    .card-footer .btn {
+        flex: 1 1 calc(50% - 0.2rem);
+        font-size: 0.75rem;
+        padding: 0.45rem 0.65rem;
     }
 
     .visualizer-container {
         height: 120px;
-    }
-
-    .synth-controls {
-        grid-template-columns: 1fr;
-    }
-
-    .slider-group {
-        margin-bottom: 1rem;
     }
 
     .tutor-grid {
@@ -1248,20 +1289,50 @@ input:checked + .toggle-slider:before {
     .tutor-card {
         padding: 1rem;
     }
+
+    .dictionary-tabs {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tab-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+        flex-grow: 1;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
     .title-meta h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .title-meta .subtitle {
+        font-size: 0.75rem;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .preset-controls {
+        width: 100%;
+    }
+
+    .preset-controls select {
+        width: 100%;
     }
 
     .app-logo {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
     }
 
     .telegraph-key {
-        height: 160px;
+        height: 140px;
     }
 
     .telegraph-button {
@@ -1269,7 +1340,15 @@ input:checked + .toggle-slider:before {
         height: 60px;
     }
 
-    .waveform-selector {
-        grid-template-columns: 1fr 1fr;
+    .keyer-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .metric:nth-child(3) {
+        grid-column: span 1;
+    }
+
+    .card-footer .btn {
+        flex: 1 1 100%;
     }
 }
