@@ -7,8 +7,8 @@
     <title>Aether Morse // Cosmic Morse Code Synthesizer & Keyer</title>
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#06080e">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/favicon.png">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Google Fonts -->
@@ -320,7 +320,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then((registration) => {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, (error) => {
                     console.log('ServiceWorker registration failed: ', error);

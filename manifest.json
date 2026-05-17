@@ -1,17 +1,30 @@
 {
-  "name": "Aether Morse",
-  "short_name": "Aether",
+  "name": "Aether Morse Portal",
+  "short_name": "Aether Morse",
   "description": "Cosmic Morse Code Synthesizer & Keyer",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#06080e",
   "theme_color": "#06080e",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "192x192 512x512",
+      "src": "/favicon.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

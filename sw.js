@@ -1,10 +1,10 @@
-const CACHE_NAME = 'aether-morse-v1';
+const CACHE_NAME = 'aether-morse-v2';
 const ASSETS = [
-    './',
-    './index.html',
-    './styles.css',
-    './app.js',
-    './favicon.png'
+    '/',
+    '/index.html',
+    '/styles.css',
+    '/app.js',
+    '/favicon.png'
 ];
 
 self.addEventListener('install', (event) => {
