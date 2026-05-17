@@ -1,0 +1,17 @@
+{
+  "name": "Aether Morse",
+  "short_name": "Aether",
+  "description": "Cosmic Morse Code Synthesizer & Keyer",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#06080e",
+  "theme_color": "#06080e",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

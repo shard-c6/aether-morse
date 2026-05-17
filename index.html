@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aether Morse - A premium, interactive Morse Code converter, high-fidelity Web Audio API synthesizer, and manual telegraph keyer.">
     <title>Aether Morse // Cosmic Morse Code Synthesizer & Keyer</title>
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#06080e">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="favicon.png">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Google Fonts -->
@@ -311,5 +315,18 @@
 
     <!-- Main JavaScript Logic -->
     <script src="app.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then((registration) => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, (error) => {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
