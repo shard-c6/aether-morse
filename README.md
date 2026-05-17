@@ -6,6 +6,8 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Web Audio API](https://img.shields.io/badge/Web_Audio_API-8A2BE2?style=flat&logo=webaudio&logoColor=white)
 
+### 🚀 **[Live Demo: aethermorse.netlify.app](https://aethermorse.netlify.app/)**
+
 **Aether Morse** is an ultra-premium, interactive single-page web portal designed for translating, synthesizing, visualizing, and mastering Morse Code in real-time. Built from the ground up with clean **Vanilla HTML5, CSS Variables, and the Web Audio API**, the application features a frosted glass celestial dark theme, real-time sweeping audio synthesizers, a live time-domain canvas oscilloscope, atmospheric static mixers, and a gamified practicing tutor.
 
 ---
